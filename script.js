@@ -195,27 +195,9 @@ const createQuiz = () => {
     actual[index][1].forEach((sec, i) => {
         answer.innerHTML += `<p class="answer" id="${i}">${sec}</p>`;
     });
-
-    const ranger = document.createElement('div')
-    ranger.classList.add('ranger')
-    console.log(actual)
-    actual.map((e,i)=>{ 
-        let current = i   
-            ranger.innerHTML += `<span class="r">${current+1}</span>`
-    })
     
     section.appendChild(answer);
-    section.appendChild(ranger)
     document.body.appendChild(section);
-    
-    const rangers = [...document.querySelectorAll('.r')]
-
-    rangers.map((r,i)=>{
-
-        if(index == i){
-            r.style.color = 'green'
-        }
-    })
 
     events();
 };
