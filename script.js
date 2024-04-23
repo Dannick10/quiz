@@ -185,7 +185,6 @@ const init = () => {
 const createQuiz = () => {
     document.body.innerHTML = '';
     
-    console.log(actual[index])
     const section = document.createElement('section');
     section.setAttribute('class', 'quiz');
     section.innerHTML += `<h1 class="title">${actual[index][0]}</h1>`;
@@ -197,8 +196,26 @@ const createQuiz = () => {
         answer.innerHTML += `<p class="answer" id="${i}">${sec}</p>`;
     });
 
+    const ranger = document.createElement('div')
+    ranger.classList.add('ranger')
+    console.log(actual)
+    actual.map((e,i)=>{ 
+        let current = i   
+            ranger.innerHTML += `<span class="r">${current+1}</span>`
+    })
+    
     section.appendChild(answer);
+    section.appendChild(ranger)
     document.body.appendChild(section);
+    
+    const rangers = [...document.querySelectorAll('.r')]
+
+    rangers.map((r,i)=>{
+
+        if(index == i){
+            r.style.color = 'green'
+        }
+    })
 
     events();
 };
@@ -278,8 +295,6 @@ const chooseOption = () => {
         choice.addEventListener('click', (e) => {
             let option = e.target.id;
             actual = quizzes[Object.keys(quizzes)[option]];
-            console.log(option)
-            console.log(actual)
             init();
         });
     });
@@ -359,4 +374,4 @@ const ask = (name) => {
     });
 };
 
-GameMenu();
+GameMenu()

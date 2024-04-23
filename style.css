@@ -123,3 +123,7 @@ button.btn{
     overflow: auto;
    gap: 1em;
 }
+
+span{
+    padding: .2em;
+}
